@@ -4,7 +4,6 @@ import 'package:weather/WeatherListViewHorizontal.dart';
 import 'package:weather/WeatherListViewVertical.dart';
 import 'package:weather/model/NewReponse.dart';
 
-
 class CurrentWeatherPager extends StatefulWidget {
   const CurrentWeatherPager({Key? key}) : super(key: key);
 
@@ -24,7 +23,7 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
 
     setState(() {
       newResponse = NewResponse.fromJson(response.data);
-      print('HieuNV: '+ newResponse.name.toString());
+      print('HieuNV: ' + newResponse.name.toString());
     });
   }
 
@@ -36,8 +35,11 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
 
   @override
   Widget build(BuildContext context) {
-
     var cels = ((newResponse.main!.temp!) - 273.15);
+    var getSunrise =
+        DateTime.fromMillisecondsSinceEpoch(newResponse.sys!.sunrise! * 1000);
+    var getSunset =
+        DateTime.fromMillisecondsSinceEpoch(newResponse.sys!.sunset! * 1000);
 
     return Scaffold(
       backgroundColor: Colors.grey[300],
@@ -83,7 +85,7 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(cels.toString() +'°C',
+                        Text(cels.toString() + '°C',
                             style:
                                 TextStyle(color: Colors.white, fontSize: 50)),
                         Text(
@@ -101,7 +103,7 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
           Container(
             height: 90,
             child: Card(
-              margin: EdgeInsets.only(left: 10, right: 10),
+              margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
               child: Row(
@@ -135,6 +137,74 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
               ),
             ),
           ),
+          Container(
+            height: 90,
+            child: Card(
+              color: Colors.lightBlue[300],
+              margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Pressure', style: TextStyle(color: Colors.grey)),
+                      Text(newResponse.main!.pressure.toString(),
+                          style: TextStyle(color: Colors.black, fontSize: 15)),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Visiblity', style: TextStyle(color: Colors.grey)),
+                      Text(newResponse.visibility.toString() + ' km',
+                          style: TextStyle(color: Colors.black, fontSize: 15)),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Sea lever', style: TextStyle(color: Colors.grey)),
+                      Text(newResponse.main!.seaLevel.toString(),
+                          style: TextStyle(color: Colors.black, fontSize: 15)),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+          Container(
+            height: 90,
+            child: Card(
+              color: Colors.white,
+              margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Sunrise', style: TextStyle(color: Colors.grey)),
+                      Text(getSunrise.toString(),
+                          style: TextStyle(color: Colors.black, fontSize: 15)),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Sunset', style: TextStyle(color: Colors.grey)),
+                      Text(getSunset.toString(),
+                          style: TextStyle(color: Colors.black, fontSize: 15)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
           WeatherByHour(),
           WeatherByDay(),
         ],
@@ -148,8 +218,12 @@ class WeatherByHour extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(itemBuilder: itemBuilder)
-    );
+    return  Container(
+      margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+        child: Text(
+            'Em còn listView horizaltal với vertical ở dưới nhưng khi làm xong e mới phát hiện ra call API 1 ngày nó k trả về theo giờ :((('
+                'a cho e xin thêm thời gian để fix ạ',
+            style: TextStyle(color: Colors.black54, fontSize: 20)),
+      );
   }
 }
