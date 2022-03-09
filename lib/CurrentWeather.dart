@@ -6,6 +6,7 @@ import 'package:weather/constant/string.dart';
 import 'package:weather/model/NewReponse.dart';
 import 'WeatherListViewHorizontal.dart';
 import 'constant/text_style.dart';
+import 'network/CurrentWeatherController.dart';
 
 class CurrentWeatherPager extends StatefulWidget {
   const CurrentWeatherPager({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
 
   fetchData() async {
     Dio _dio = Dio();
-    Response response = await _dio.get(URL);
+    Response response = await _dio.get(DefineString.URL);
 
     setState(() {
       _newResponse = NewResponse.fromJson(response.data);
@@ -44,11 +45,11 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
                 semanticContainer: true,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Image.asset(
-                  pathImageBgr,
+                  DefineString.pathImageBgr,
                   fit: BoxFit.fill,
                 ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: kBorderRadius,
+                  borderRadius: Constant.kBorderRadius,
                 ),
                 elevation: 5,
                 margin: EdgeInsets.all(10),
@@ -62,10 +63,10 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Image.asset(
-                          assets +
+                          DefineString.assets +
                               _newResponse.list![0].weather![0].icon
                                   .toString() +
-                              png, // fix constant
+                              DefineString.png, // fix constant
                           height: 150,
                           width: 100,
                         ),
@@ -105,8 +106,9 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
           Container(
             height: 90,
             child: Card(
-              margin: kEdgeInsets,
-              shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
+              margin: Constant.kEdgeInsets,
+              shape:
+                  RoundedRectangleBorder(borderRadius: Constant.kBorderRadius),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -151,7 +153,3 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
     );
   }
 }
-
-
-
-

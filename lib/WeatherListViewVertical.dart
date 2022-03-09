@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:weather/DateHelper.dart';
 import 'constant/string.dart';
 import 'model/NewReponse.dart';
 
@@ -19,15 +20,15 @@ Widget WeatherByDay(NewResponse _newResponse) {
               children: [
                 Expanded(
                     child: Text(
-                  "${getDateFromTimestamp(_newResponse.list![index].dt!.toInt())}",
+                  "${DateHelper.getDateFromTimestamp(_newResponse.list![index].dt!.toInt())}",
                   style: TextStyle(fontSize: 14, color: Colors.black),
                 )),
                 Expanded(
                   child: Image.asset(
-                      assets +
+                      DefineString.assets +
                           _newResponse.list![index].weather![0].icon
                               .toString() +
-                          png,
+                          DefineString.png,
                       height: 70,
                       width: 70),
                 ),
@@ -47,8 +48,4 @@ Widget WeatherByDay(NewResponse _newResponse) {
   );
 }
 
-String getDateFromTimestamp(int timestamp) {
-  var date = new DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-  var formatter = new DateFormat('E');
-  return formatter.format(date);
-}
+

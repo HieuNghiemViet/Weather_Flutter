@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:weather/DateHelper.dart';
 import 'constant/string.dart';
 import 'model/NewReponse.dart';
 
@@ -13,13 +13,12 @@ Widget WeatherByHour(NewResponse _newResponse) {
       itemCount: _newResponse.list?.length,
       itemBuilder: (context, index) {
         return Container(
-          padding:
-              const EdgeInsets.only(left: 10, top: 15, bottom: 15, right: 10),
+          padding: const EdgeInsets.only(left: 10, top: 15, bottom: 15, right: 10),
           margin: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(18)),
-            boxShadow: [
+            boxShadow: [ // đổ bóng
               BoxShadow(
                 color: Colors.grey.withOpacity(0.1),
                 spreadRadius: 2,
@@ -38,14 +37,14 @@ Widget WeatherByHour(NewResponse _newResponse) {
                     color: Colors.black),
               ),
               Image.asset(
-                assets +
+                DefineString.assets +
                     _newResponse.list![index].weather![0].icon.toString() +
-                    png, // fix constant
+                    DefineString.png, // fix constant
                 height: 70,
                 width: 70,
               ),
               Text(
-                "${getTimeFromTimestamp(_newResponse.list![index].dt!.toInt())}",
+                "${DateHelper.getTimeFromTimestamp(_newResponse.list![index].dt!.toInt())}",
                 style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 12,
@@ -59,8 +58,4 @@ Widget WeatherByHour(NewResponse _newResponse) {
   );
 }
 
-String getTimeFromTimestamp(int timestamp) {
-  var date = new DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-  var formatter = new DateFormat('h:mm a');
-  return formatter.format(date);
-}
+

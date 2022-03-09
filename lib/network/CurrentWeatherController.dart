@@ -13,7 +13,7 @@ class CurrentWeatherController {
   Future<NewResponse?> fetchNewWeather() async {
     try {
       print('HieuNV: Fetch new');
-      Response response = await _dio.get(URL);
+      Response response = await _dio.get(DefineString.URL);
       NewResponse newResponse = NewResponse.fromJson(response.data);
       return newResponse;
     } catch (e) {
