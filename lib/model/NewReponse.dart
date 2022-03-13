@@ -22,6 +22,12 @@ class NewResponse {
     }
     city = json['city'] != null ? new City.fromJson(json['city']) : null;
   }
+
+  bool isEmpty() {
+    if (list?.isEmpty ?? true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
-
-

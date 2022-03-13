@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:weather/CurrentWeather.dart';
+import 'package:weather/CurrentWeatherPager.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:weather/Login.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
-Future<void> initialize() async {
-
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -26,6 +25,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: CurrentWeatherPager());
+    //Login());
+
+       //
   }
 }
 
