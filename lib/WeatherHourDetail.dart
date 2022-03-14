@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:weather/CurrentWeatherPager.dart';
 
-class WeatherHourDatail extends StatelessWidget {
-  const WeatherHourDatail({Key? key}) : super(key: key);
+class WeatherHourDetail extends StatelessWidget {
+  const WeatherHourDetail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String textButton = 'Call Back';
     return Container(
       color: Colors.lightBlueAccent,
       child:  Center(
@@ -18,7 +19,7 @@ class WeatherHourDatail extends StatelessWidget {
             Navigator.of(context).popUntil((route) => route.isFirst);
           },
           child: Text(
-            'Call Back',
+            textButton,
             style: TextStyle(color: Colors.black54),
           ),
         ),

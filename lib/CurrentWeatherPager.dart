@@ -51,7 +51,7 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
                 children: [
                   WeatherHanoi(_newResponse),
                   WiHumiPre(_newResponse),
-                  WeatherByHour(_newResponse),
+                  WeatherByHour(newResponse: _newResponse),
                   WeatherByDay(_newResponse),
                 ],
               ),

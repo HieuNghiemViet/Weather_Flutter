@@ -5,7 +5,7 @@ class NewResponse {
   String? cod;
   int? message;
   int? cnt;
-  List<Lists>? list;
+  List<InfomationWeather>? list;
   City? city;
 
   NewResponse({this.cod, this.message, this.cnt, this.list, this.city});
@@ -15,9 +15,9 @@ class NewResponse {
     message = json['message'];
     cnt = json['cnt'];
     if (json['list'] != null) {
-      list = <Lists>[];
+      list = <InfomationWeather>[];
       json['list'].forEach((v) {
-        list!.add(new Lists.fromJson(v));
+        list!.add(new InfomationWeather.fromJson(v));
       });
     }
     city = json['city'] != null ? new City.fromJson(json['city']) : null;

@@ -6,7 +6,7 @@ import 'Sys.dart';
 import 'Weather.dart';
 import 'Wind.dart';
 
-class Lists {
+class InfomationWeather {
   int? dt;
   Main? main;
   List<Weather>? weather;
@@ -18,7 +18,7 @@ class Lists {
   String? dtTxt;
   Rain? rain;
 
-  Lists(
+  InfomationWeather(
       {this.dt,
         this.main,
         this.weather,
@@ -30,7 +30,7 @@ class Lists {
         this.dtTxt,
         this.rain});
 
-  Lists.fromJson(Map<String, dynamic> json) {
+  InfomationWeather.fromJson(Map<String, dynamic> json) {
     dt = json['dt'];
     main = json['main'] != null ? new Main.fromJson(json['main']) : null;
     if (json['weather'] != null) {
