@@ -17,12 +17,12 @@ class WeatherDayDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(30, 20, 20, 0),
+      padding: EdgeInsets.fromLTRB(30, 50, 20, 0),
       color: Colors.lightBlueAccent,
       child: Column(
         children: [
           setImageIcon(newResponse, index!),
-          InkWell(
+          GestureDetector(
               onTap: () => {
                     Navigator.push(
                         context,
@@ -41,7 +41,7 @@ class WeatherDayDetail extends StatelessWidget {
 Widget setImageIcon(NewResponse _newResponse, int index) {
   return Image.asset(DefineString.assets +
       _newResponse.list![index].weather![0].icon.toString() +
-      DefineString.png);
+      DefineString.png, fit: BoxFit.fill);
 }
 
 Widget infoTempFeelslike(NewResponse _newResponse, int index) {

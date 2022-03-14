@@ -39,6 +39,11 @@ class _CurrentWeatherPagerState extends State<CurrentWeatherPager> {
       triggerMode: RefreshIndicatorTriggerMode.onEdge,
       onRefresh: () => fetchData(),
       child: Scaffold(
+        appBar: AppBar(
+          title: Text('Weather Hanoi', style: TextStyle(fontSize: 25)),
+          backgroundColor: Colors.lightBlueAccent,
+
+        ),
         backgroundColor: Colors.grey[300],
         body: _newResponse.isEmpty()
             ? Container()
