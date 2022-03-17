@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'CounterCubit.dart';
 
 
-class ExampleStream extends StatelessWidget {
-  const ExampleStream({Key? key}) : super(key: key);
+class ExampleStreamUseBloc extends StatelessWidget {
+  const ExampleStreamUseBloc({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
