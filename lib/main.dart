@@ -1,18 +1,19 @@
+import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:weather/CurrentWeatherPager.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:weather/Login.dart';
-import 'package:weather/WeatherDayDetail.dart';
-import 'package:weather/WeatherHourDetail.dart';
-import 'package:weather/WeatherListViewHorizontal.dart';
-import 'package:weather/model/List.dart';
-import 'package:weather/model/NewReponse.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/constant/text_style.dart';
+import 'ExampleBloC/ExampleStream.dart';
+import 'CurrentWeatherPager.dart';
+import 'ExampleBloC/ExampleStream.dart';
+import 'WeatherDayDetail.dart';
+import 'WeatherHourDetail.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //await Firebase.initializeApp();
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -40,7 +41,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: CurrentWeatherPager());
+        home: ExampleStream());
+    //CurrentWeatherPager());
     //Login());
 
     //
